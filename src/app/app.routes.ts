@@ -3,6 +3,7 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserComponent } from './dashboard/user/user.component';
+import { UserAddComponent } from './dashboard/user/user-add/user-add.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -11,8 +12,17 @@ export const routes: Routes = [
     component: DashboardComponent,
     children: [
       {
-        path: 'user',
+        path: '',
+        redirectTo: 'users',
+        pathMatch: 'full',
+      },
+      {
+        path: 'users',
         component: UserComponent,
+      },
+      {
+        path: 'users/add',
+        component: UserAddComponent,
       },
     ],
   },
