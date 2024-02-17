@@ -1,3 +1,41 @@
 <main>
-  <div class="card">woilah</div>
+  <div class="card">
+    <h1 class="card__title">Employee Management System</h1>
+
+    <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
+      <div class="tw-space-y-3 tw-mb-8">
+        <!-- Username -->
+        <div class="tw-flex tw-flex-col tw-gap-2">
+          <label for="username">Username</label>
+          <input
+            pInputText
+            id="username"
+            formControlName="username"
+            placeholder="Input your username"
+          />
+        </div>
+
+        <!-- Password -->
+        <div class="tw-flex tw-flex-col tw-gap-2">
+          <label for="password">Password</label>
+          <input
+            pInputText
+            id="password"
+            type="password"
+            formControlName="password"
+            placeholder="Input your password"
+            minlength="6"
+            maxlength="8"
+          />
+        </div>
+      </div>
+
+      <p-button
+        label="Sign In"
+        type="submit"
+        [disabled]="!loginForm?.valid"
+        styleClass="tw-w-full"
+      />
+    </form>
+  </div>
 </main>

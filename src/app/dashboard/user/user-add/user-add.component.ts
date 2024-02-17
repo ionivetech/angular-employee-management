@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterLink, Router } from '@angular/router';
 // Services
 import { EmployeeService } from '@services/employee.service';
 // Models
@@ -7,20 +6,17 @@ import { userModel } from '@models/user.model';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-user',
+  selector: 'app-user-add',
   standalone: true,
-  imports: [RouterLink],
-  templateUrl: './user.component.html',
-  styleUrl: './user.component.scss',
+  imports: [],
+  templateUrl: './user-add.component.html',
+  styleUrl: './user-add.component.scss',
 })
-export class UserComponent {
+export class UserAddComponent {
   employeeServiceSubscribe: Subscription;
   dataEmployee: userModel[] = [];
 
-  constructor(
-    private employeeService: EmployeeService,
-    private router: Router
-  ) {
+  constructor(private employeeService: EmployeeService) {
     this.employeeServiceSubscribe = this.employeeService.employee$.subscribe(
       (employee) => {
         this.dataEmployee = employee;
