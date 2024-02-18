@@ -37,7 +37,7 @@ export class LoginComponent {
   // Handle submit form
   submitForm(): void {
     if (this.loginForm?.valid) {
-      this.router.navigateByUrl('/dashboard/users');
+      this.router.navigateByUrl('/dashboard/employee');
     }
   }
 }

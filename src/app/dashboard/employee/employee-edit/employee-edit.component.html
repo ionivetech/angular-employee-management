@@ -1,6 +1,7 @@
 <div class="tw-w-full tw-bg-white tw-p-6 md:tw-p-10 tw-rounded-xl">
-  <h1 class="tw-text-xl tw-font-semibold tw-mb-5">Add New Employee</h1>
+  <h1 class="tw-text-xl tw-font-semibold tw-mb-5">Edit Employee</h1>
 
+  @if (employeeForm) {
   <form [formGroup]="employeeForm" (ngSubmit)="submitForm()">
     <div class="tw-space-y-6">
       <div class="tw-grid md:tw-grid-cols-3 tw-gap-6">
@@ -156,7 +157,7 @@
     </div>
 
     <div class="tw-flex tw-justify-end tw-space-x-3 tw-mt-10">
-      <a routerLink="/dashboard/users">
+      <a routerLink="/dashboard/employee">
         <p-button
           label="Cancel"
           type="button"
@@ -168,8 +169,9 @@
         label="Save Data"
         type="submit"
         size="small"
-        [disabled]="!employeeForm!.valid"
+        [disabled]="!employeeForm.valid"
       />
     </div>
   </form>
+  }
 </div>
