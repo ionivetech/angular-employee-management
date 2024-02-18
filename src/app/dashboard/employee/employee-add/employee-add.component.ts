@@ -14,7 +14,7 @@ import { ButtonModule } from 'primeng/button';
 import { MessageService } from 'primeng/api';
 
 @Component({
-  selector: 'app-user-add',
+  selector: 'app-employee-add',
   standalone: true,
   imports: [
     RouterLink,
@@ -26,10 +26,9 @@ import { MessageService } from 'primeng/api';
     InputTextareaModule,
     ButtonModule,
   ],
-  templateUrl: './user-add.component.html',
-  styleUrl: './user-add.component.scss',
+  templateUrl: './employee-add.component.html',
 })
-export class UserAddComponent {
+export class EmployeeAddComponent {
   employeeForm: FormGroup;
   maxDate: Date | undefined;
   statusOptions: { value: string; label: string }[] = [
@@ -87,7 +86,7 @@ export class UserAddComponent {
       dataForm.birthDate = new Date(dataForm.birthDate).getTime() / 1000;
 
       this.employeeService.addEmployee(dataForm);
-      this.router.navigateByUrl('/dashboard/users');
+      this.router.navigateByUrl('/dashboard/employee');
 
       this.messageService.add({
         severity: 'success',

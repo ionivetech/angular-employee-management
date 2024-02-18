@@ -2,8 +2,9 @@ import { Routes } from '@angular/router';
 // Components
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { UserComponent } from './dashboard/user/user.component';
-import { UserAddComponent } from './dashboard/user/user-add/user-add.component';
+import { EmployeeComponent } from './dashboard/employee/employee.component';
+import { EmployeeAddComponent } from './dashboard/employee/employee-add/employee-add.component';
+import { EmployeeEditComponent } from './dashboard/employee/employee-edit/employee-edit.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -13,16 +14,20 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'users',
+        redirectTo: 'employee',
         pathMatch: 'full',
       },
       {
-        path: 'users',
-        component: UserComponent,
+        path: 'employee',
+        component: EmployeeComponent,
       },
       {
-        path: 'users/add',
-        component: UserAddComponent,
+        path: 'add-employee',
+        component: EmployeeAddComponent,
+      },
+      {
+        path: 'edit-employee/:username',
+        component: EmployeeEditComponent,
       },
     ],
   },

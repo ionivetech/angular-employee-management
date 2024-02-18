@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 // Models
-import type { userModel } from '@models/user.model';
+import type { employeeModel } from '@src/app/models/employee.model';
 // Dummy
 import dummy from '@src/assets/dummyData.json';
 
@@ -9,7 +9,7 @@ import dummy from '@src/assets/dummyData.json';
   providedIn: 'root',
 })
 export class EmployeeService {
-  private _employee = new BehaviorSubject<userModel[]>([]);
+  private _employee = new BehaviorSubject<employeeModel[]>([]);
 
   constructor() {
     this._employee.next(dummy);
@@ -20,9 +20,16 @@ export class EmployeeService {
   }
 
   // Add new data employee
-  addEmployee(value: userModel): void {
+  addEmployee(value: employeeModel): void {
     const dataEmployee = this._employee.getValue();
     dataEmployee.unshift(value);
+    this._employee.next(dataEmployee);
+  }
+
+  // Edit data employee
+  editEmployee(value: employeeModel, index: number): void {
+    const dataEmployee = this._employee.getValue();
+    dataEmployee[index] = value;
     this._employee.next(dataEmployee);
   }
 }

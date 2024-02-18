@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 // Services
 import { EmployeeService } from '@services/employee.service';
 // Models
-import type { userModel } from '@models/user.model';
+import type { employeeModel } from '@src/app/models/employee.model';
 import type { Subscription } from 'rxjs';
 // Components
 import { ButtonModule } from 'primeng/button';
@@ -14,7 +14,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { TagModule } from 'primeng/tag';
 
 @Component({
-  selector: 'app-user',
+  selector: 'app-employee',
   standalone: true,
   imports: [
     CommonModule,
@@ -25,13 +25,12 @@ import { TagModule } from 'primeng/tag';
     InputTextModule,
     TagModule,
   ],
-  templateUrl: './user.component.html',
-  styleUrl: './user.component.scss',
+  templateUrl: './employee.component.html',
 })
-export class UserComponent {
+export class EmployeeComponent {
   employeeServiceSubscribe: Subscription;
-  masterEmployee: userModel[] = [];
-  _dataEmployee: userModel[] = [];
+  masterEmployee: employeeModel[] = [];
+  _dataEmployee: employeeModel[] = [];
   search: string = '';
   debounceSearch: any;
 
@@ -60,10 +59,10 @@ export class UserComponent {
   }
 
   // Data employee
-  get dataEmployee(): userModel[] {
+  get dataEmployee(): employeeModel[] {
     return this._dataEmployee;
   }
-  set dataEmployee(value: userModel[]) {
+  set dataEmployee(value: employeeModel[]) {
     this._dataEmployee = value;
   }
 
@@ -95,8 +94,13 @@ export class UserComponent {
       this.dataEmployee = JSON.parse(JSON.stringify(this.masterEmployee));
 
       // Clear query params
-      this.router.navigate(['/dashboard/users']);
+      this.router.navigate(['/dashboard/employee']);
     }
+  }
+
+  // Go to edit page
+  editEmployee(username: string): void {
+    this.router.navigateByUrl(`/dashboard/edit-employee/${username}`);
   }
 
   ngOnDestroy() {

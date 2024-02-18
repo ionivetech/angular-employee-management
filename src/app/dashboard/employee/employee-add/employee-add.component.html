@@ -1,0 +1,175 @@
+<div class="tw-w-full tw-bg-white tw-p-6 md:tw-p-10 tw-rounded-xl">
+  <h1 class="tw-text-xl tw-font-semibold tw-mb-5">Add New Employee</h1>
+
+  <form [formGroup]="employeeForm" (ngSubmit)="submitForm()">
+    <div class="tw-space-y-6">
+      <div class="tw-grid md:tw-grid-cols-3 tw-gap-6">
+        <!-- Username -->
+        <div class="tw-flex tw-flex-col tw-gap-2">
+          <label for="username" class="tw-text-sm tw-font-medium">
+            Username
+          </label>
+          <input
+            pInputText
+            id="username"
+            formControlName="username"
+            placeholder="Input username"
+            class="p-inputtext-sm"
+          />
+        </div>
+
+        <!-- First name -->
+        <div class="tw-flex tw-flex-col tw-gap-2">
+          <label for="firstName" class="tw-text-sm tw-font-medium">
+            First Name
+          </label>
+          <input
+            pInputText
+            id="firstName"
+            formControlName="firstName"
+            placeholder="Input first name"
+            class="p-inputtext-sm"
+          />
+        </div>
+
+        <!-- Last name -->
+        <div class="tw-flex tw-flex-col tw-gap-2">
+          <label for="lastName" class="tw-text-sm tw-font-medium">
+            Last Name
+          </label>
+          <input
+            pInputText
+            id="lastName"
+            formControlName="lastName"
+            placeholder="Input last name"
+            class="p-inputtext-sm"
+          />
+        </div>
+      </div>
+
+      <div class="tw-grid md:tw-grid-cols-3 tw-gap-6">
+        <!-- Email -->
+        <div class="tw-flex tw-flex-col tw-gap-2">
+          <label for="email" class="tw-text-sm tw-font-medium"> Email </label>
+          <input
+            pInputText
+            id="email"
+            type="email"
+            formControlName="email"
+            placeholder="Input email"
+            class="p-inputtext-sm"
+          />
+          @if (employeeForm.controls['email']['errors']?.['email']) {
+          <small id="email-help" class="tw-text-red-500">
+            Email is not valid
+          </small>
+          }
+        </div>
+
+        <!-- Birth date -->
+        <div class="tw-flex tw-flex-col tw-gap-2">
+          <label for="birthDate" class="tw-text-sm tw-font-medium">
+            Birth Date
+          </label>
+          <p-calendar
+            formControlName="birthDate"
+            [showTime]="true"
+            [showButtonBar]="true"
+            [maxDate]="maxDate!"
+            [iconDisplay]="'input'"
+            [showIcon]="true"
+            placeholder="Select birth date"
+            class="p-inputtext-sm"
+            styleClass="tw-w-full"
+          />
+        </div>
+
+        <!-- Basic salary -->
+        <div class="tw-flex tw-flex-col tw-gap-2">
+          <label for="basicSalary" class="tw-text-sm tw-font-medium">
+            Salary
+          </label>
+          <input
+            pInputText
+            id="basicSalary"
+            type="number"
+            formControlName="basicSalary"
+            minlength="6"
+            placeholder="Input salary"
+            class="p-inputtext-sm"
+          />
+        </div>
+      </div>
+
+      <div class="tw-grid md:tw-grid-cols-2 tw-gap-6">
+        <!-- Status -->
+        <div class="tw-flex tw-flex-col tw-gap-2">
+          <label for="status" class="tw-text-sm tw-font-medium">
+            Employee Status
+          </label>
+          <p-dropdown
+            formControlName="status"
+            [options]="statusOptions"
+            optionValue="value"
+            optionLabel="label"
+            [filter]="true"
+            filterBy="label"
+            placeholder="Select status"
+            class="p-inputtext-sm"
+            styleClass="tw-w-full"
+          />
+        </div>
+
+        <!-- Group -->
+        <div class="tw-flex tw-flex-col tw-gap-2">
+          <label for="group" class="tw-text-sm tw-font-medium">
+            Employee Group
+          </label>
+          <p-dropdown
+            formControlName="group"
+            [options]="groupOptions"
+            optionValue="value"
+            optionLabel="label"
+            [filter]="true"
+            filterBy="label"
+            placeholder="Select group"
+            class="p-inputtext-sm"
+            styleClass="tw-w-full"
+          />
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div class="tw-flex tw-flex-col tw-gap-2">
+        <label for="description" class="tw-text-sm tw-font-medium">
+          Description
+        </label>
+        <textarea
+          rows="5"
+          cols="30"
+          pInputTextarea
+          formControlName="description"
+          [autoResize]="true"
+          placeholder="Input description"
+        ></textarea>
+      </div>
+    </div>
+
+    <div class="tw-flex tw-justify-end tw-space-x-3 tw-mt-10">
+      <a routerLink="/dashboard/employee">
+        <p-button
+          label="Cancel"
+          type="button"
+          severity="secondary"
+          size="small"
+        />
+      </a>
+      <p-button
+        label="Save Data"
+        type="submit"
+        size="small"
+        [disabled]="!employeeForm!.valid"
+      />
+    </div>
+  </form>
+</div>
