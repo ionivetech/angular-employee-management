@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { EmployeeComponent } from './dashboard/employee/employee.component';
 import { EmployeeAddComponent } from './dashboard/employee/employee-add/employee-add.component';
 import { EmployeeEditComponent } from './dashboard/employee/employee-edit/employee-edit.component';
+import { EmployeeDetailComponent } from './dashboard/employee/employee-detail/employee-detail.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -28,6 +29,10 @@ export const routes: Routes = [
       {
         path: 'edit-employee/:username',
         component: EmployeeEditComponent,
+      },
+      {
+        path: 'detail-employee/:username',
+        component: EmployeeDetailComponent,
       },
     ],
   },

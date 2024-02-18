@@ -1,0 +1,124 @@
+<div class="tw-w-full tw-bg-white tw-p-6 md:tw-p-10 tw-rounded-xl">
+  <!-- Back to list -->
+  <div
+    class="tw-flex tw-items-center tw-text-sm tw-font-semibold tw-space-x-2 tw-text-blue-800 tw-mb-5 tw-cursor-pointer"
+    (click)="backToList()"
+  >
+    <i class="pi pi-arrow-left"></i>
+    <span class="tw-text-blue-800">Back to List</span>
+  </div>
+
+  <h1 class="tw-text-xl tw-font-semibold tw-mb-8">Detail Employee</h1>
+
+  @if (employeeDetail) {
+  <div class="tw-grid tw-gap-5 md:tw-grid-cols-3">
+    <!-- Username -->
+    <div class="tw-flex tw-flex-col tw-gap-y-1">
+      <span
+        class="tw-text-sm md:tw-text-base tw-font-semibold tw-text-slate-800"
+      >
+        Username:
+      </span>
+      <span class="tw-text-sm md:tw-text-base tw-text-slate-800">
+        {{ employeeDetail.username }}
+      </span>
+    </div>
+
+    <!-- First name -->
+    <div class="tw-flex tw-flex-col tw-gap-y-1">
+      <span
+        class="tw-text-sm md:tw-text-base tw-font-semibold tw-text-slate-800"
+      >
+        First Name:
+      </span>
+      <span class="tw-text-sm md:tw-text-base tw-text-slate-800">
+        {{ employeeDetail.firstName }}
+      </span>
+    </div>
+
+    <!-- Last name -->
+    <div class="tw-flex tw-flex-col tw-gap-y-1">
+      <span
+        class="tw-text-sm md:tw-text-base tw-font-semibold tw-text-slate-800"
+      >
+        Last Name:
+      </span>
+      <span class="tw-text-sm md:tw-text-base tw-text-slate-800">
+        {{ employeeDetail.firstName }}
+      </span>
+    </div>
+
+    <!-- Email -->
+    <div class="tw-flex tw-flex-col tw-gap-y-1">
+      <span
+        class="tw-text-sm md:tw-text-base tw-font-semibold tw-text-slate-800"
+      >
+        Email:
+      </span>
+      <span class="tw-text-sm md:tw-text-base tw-text-slate-800">
+        {{ employeeDetail.email }}
+      </span>
+    </div>
+
+    <!-- Birth date -->
+    <div class="tw-flex tw-flex-col tw-gap-y-1">
+      <span
+        class="tw-text-sm md:tw-text-base tw-font-semibold tw-text-slate-800"
+      >
+        Birth Date:
+      </span>
+      <span class="tw-text-sm md:tw-text-base tw-text-slate-800">
+        {{ employeeDetail.birthDate | date : "dd/MMMM/YYYY hh:MM" }}
+      </span>
+    </div>
+
+    <!-- Basic salary -->
+    <div class="tw-flex tw-flex-col tw-gap-y-1">
+      <span
+        class="tw-text-sm md:tw-text-base tw-font-semibold tw-text-slate-800"
+      >
+        Salary:
+      </span>
+      <span class="tw-text-sm md:tw-text-base tw-text-slate-800">
+        {{ employeeDetail.basicSalary | priceFormat }}
+      </span>
+    </div>
+
+    <!-- Status -->
+    <div class="tw-flex tw-flex-col tw-gap-y-1">
+      <span
+        class="tw-text-sm md:tw-text-base tw-font-semibold tw-text-slate-800"
+      >
+        Salary:
+      </span>
+      <span class="tw-text-sm md:tw-text-base tw-text-slate-800 tw-capitalize">
+        {{ employeeDetail.status }}
+      </span>
+    </div>
+
+    <!-- Group -->
+    <div class="tw-flex tw-flex-col tw-gap-y-1">
+      <span
+        class="tw-text-sm md:tw-text-base tw-font-semibold tw-text-slate-800"
+      >
+        Group:
+      </span>
+      <span class="tw-text-sm md:tw-text-base tw-text-slate-800">
+        {{ employeeDetail.group }}
+      </span>
+    </div>
+  </div>
+
+  <!-- Description -->
+  <div class="tw-flex tw-flex-col tw-gap-y-1 tw-mt-5">
+    <span class="tw-text-sm md:tw-text-base tw-font-semibold tw-text-slate-800">
+      Description:
+    </span>
+    <span
+      class="tw-text-sm md:tw-text-base tw-text-slate-800 tw-max-w-prose tw-leading-relaxed"
+    >
+      {{ employeeDetail.description }}
+    </span>
+  </div>
+  }
+</div>

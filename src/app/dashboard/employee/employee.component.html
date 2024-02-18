@@ -29,6 +29,8 @@
     [paginator]="true"
     [rows]="10"
     [rowsPerPageOptions]="[10, 30, 50]"
+    selectionMode="single"
+    (onRowSelect)="toDetailPage($event.data.username)"
     [tableStyle]="{ 'min-width': '50rem' }"
   >
     <ng-template pTemplate="header">
@@ -42,7 +44,7 @@
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-data>
-      <tr>
+      <tr [pSelectableRow]="data">
         <td>
           <div class="tw-lowercase">{{ data.username }}</div>
         </td>
