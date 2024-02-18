@@ -1,3 +1,5 @@
+<p-confirmDialog />
+
 <div class="tw-w-full tw-bg-white tw-p-6 md:tw-p-10 tw-rounded-xl">
   <h1 class="tw-text-xl tw-font-semibold tw-mb-5">Employee Lists</h1>
 
@@ -26,8 +28,6 @@
     [value]="dataEmployee"
     [paginator]="true"
     [rows]="10"
-    [showCurrentPageReport]="true"
-    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
     [rowsPerPageOptions]="[10, 30, 50]"
     [tableStyle]="{ 'min-width': '50rem' }"
   >
@@ -71,6 +71,7 @@
               severity="danger"
               icon="pi pi-trash"
               styleClass="tw-p-2 tw-w-[2.5rem]"
+              (click)="deleteEmployee(data.username)"
             />
           </div>
         </td>

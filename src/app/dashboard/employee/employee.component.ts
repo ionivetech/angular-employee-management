@@ -12,6 +12,9 @@ import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { InputTextModule } from 'primeng/inputtext';
 import { TagModule } from 'primeng/tag';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+// PrimeNg services
+import { MessageService, ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-employee',
@@ -24,6 +27,7 @@ import { TagModule } from 'primeng/tag';
     TableModule,
     InputTextModule,
     TagModule,
+    ConfirmDialogModule,
   ],
   templateUrl: './employee.component.html',
 })
@@ -37,19 +41,20 @@ export class EmployeeComponent {
   constructor(
     private employeeService: EmployeeService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService
   ) {
     // Subscribe and get data employee from services
     this.employeeServiceSubscribe = this.employeeService.employee$.subscribe(
       (employee) => {
         this.masterEmployee = employee;
+        this._dataEmployee = this.masterEmployee;
       }
     );
   }
 
   ngOnInit() {
-    this._dataEmployee = JSON.parse(JSON.stringify(this.masterEmployee));
-
     this.activatedRoute.queryParams.subscribe((params) => {
       if (params['q']) {
         this.search = params['q'];
@@ -101,6 +106,35 @@ export class EmployeeComponent {
   // Go to edit page
   editEmployee(username: string): void {
     this.router.navigateByUrl(`/dashboard/edit-employee/${username}`);
+  }
+
+  // Handle delete employee
+  deleteEmployee(username: string): void {
+    const findIndex = this.masterEmployee.findIndex(
+      (e) => e.username === username
+    );
+    if (findIndex > -1) {
+      // Show confirmation message
+      this.confirmationService.confirm({
+        message: 'Are you sure delete this employee?',
+        header: 'Confirmation',
+        icon: 'pi pi-exclamation-triangle',
+        acceptIcon: 'no',
+        rejectIcon: 'none',
+        acceptButtonStyleClass: 'p-button-danger p-button-sm',
+        rejectButtonStyleClass: 'p-button-secondary p-button-text p-button-sm',
+        accept: () => {
+          this.employeeService.deleteEmployee(findIndex);
+
+          // Show toast
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Success',
+            detail: 'Employee deleted successfully',
+          });
+        },
+      });
+    }
   }
 
   ngOnDestroy() {

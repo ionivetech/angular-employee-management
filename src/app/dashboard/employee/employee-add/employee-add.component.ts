@@ -88,6 +88,7 @@ export class EmployeeAddComponent {
       this.employeeService.addEmployee(dataForm);
       this.router.navigateByUrl('/dashboard/employee');
 
+      // SHow toast
       this.messageService.add({
         severity: 'success',
         summary: 'Success',

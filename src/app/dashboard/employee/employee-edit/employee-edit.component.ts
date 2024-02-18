@@ -128,6 +128,7 @@ export class EmployeeEditComponent {
       this.employeeService.editEmployee(dataForm, this.employeeDataIndex);
       this.router.navigateByUrl('/dashboard/employee');
 
+      // Show toast
       this.messageService.add({
         severity: 'success',
         summary: 'Success',

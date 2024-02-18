@@ -32,4 +32,11 @@ export class EmployeeService {
     dataEmployee[index] = value;
     this._employee.next(dataEmployee);
   }
+
+  // Delete data employee
+  deleteEmployee(index: number): void {
+    const dataEmployee = this._employee.getValue();
+    dataEmployee.splice(index, 1);
+    this._employee.next(dataEmployee);
+  }
 }
