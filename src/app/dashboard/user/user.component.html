@@ -4,7 +4,9 @@
   <div
     class="tw-flex tw-flex-col md:tw-flex-row md:tw-items-center md:tw-justify-between tw-space-y-3 md:tw-space-x-3 tw-mb-5"
   >
-    <p-button label="Add Employee" size="small" icon="pi pi-plus" />
+    <a routerLink="/dashboard/users/add">
+      <p-button label="Add Employee" size="small" icon="pi pi-plus" />
+    </a>
 
     <!-- Search -->
     <span class="p-input-icon-left">
@@ -20,7 +22,6 @@
     </span>
   </div>
 
-  @if (dataEmployee && dataEmployee.length > 0) {
   <p-table
     [value]="dataEmployee"
     [paginator]="true"
@@ -74,6 +75,12 @@
         </td>
       </tr>
     </ng-template>
+
+    <!-- Empty data -->
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="6" class="tw-text-center">No data found.</td>
+      </tr>
+    </ng-template>
   </p-table>
-  }
 </div>
