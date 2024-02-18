@@ -1,0 +1,18 @@
+// Table
+.p-datatable {
+  .p-datatable-thead > tr > th {
+    @apply tw-bg-white tw-font-semibold tw-text-sm tw-text-slate-800;
+  }
+  .p-datatable-tbody > tr > td {
+    @apply tw-text-sm tw-text-slate-600 tw-capitalize tw-border-slate-200;
+  }
+}
+
+// Pagination
+.p-paginator {
+  @apply tw-mt-5 tw-border-b-0;
+
+  .p-paginator-current {
+    @apply tw-cursor-default;
+  }
+}

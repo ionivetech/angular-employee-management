@@ -9,6 +9,10 @@
 // PrimeNg
 @import 'primeng/resources/themes/lara-light-blue/theme.css';
 @import 'primeng/resources/primeng.min.css';
+@import "primeicons/primeicons.css";
+
+// Custom primeNg
+@import './assets/scss/custom-component.scss';
 
 html, body {
   margin: 0;
