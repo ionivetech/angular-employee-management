@@ -114,8 +114,11 @@ export class EmployeeEditComponent {
   }
 
   // Convert epoch to date
-  epochToDate(epoch: string | undefined): Date | string {
-    if (epoch) return new Date(Number(epoch) * 1000);
+  epochToDate(epoch: string | Date | undefined): Date | string {
+    if (epoch) {
+      if (typeof epoch === 'string') return new Date(Number(epoch) * 1000);
+      else return epoch;
+    }
     return '';
   }
 

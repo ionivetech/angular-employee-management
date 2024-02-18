@@ -2,12 +2,17 @@
   class="tw-w-full tw-h-screen tw-bg-[#34518c] tw-flex tw-justify-center tw-items-center tw-p-4"
 >
   <div class="tw-w-[450px] tw-bg-white tw-p-6 md:tw-p-10 tw-rounded-xl">
-    <h1 class="tw-text-[20px] tw-font-semibold tw-text-center tw-mb-10">
+    <div
+      class="tw-text-4xl tw-font-semibold tw-tracking-wide tw-text-blue-800 tw-text-center tw-mb-1"
+    >
+      EMS
+    </div>
+    <h1 class="tw-text-base tw-font-medium tw-text-center tw-mb-10">
       Employee Management System
     </h1>
 
     <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
-      <div class="tw-space-y-3 tw-mb-8">
+      <div class="tw-space-y-3 tw-mb-4">
         <!-- Username -->
         <div class="tw-flex tw-flex-col tw-gap-2">
           <label for="username">Username</label>
@@ -16,7 +21,14 @@
             id="username"
             formControlName="username"
             placeholder="Input your username"
+            [class.ng-invalid]="errorUsername"
+            [class.ng-dirty]="errorUsername"
           />
+          @if (errorUsername) {
+          <small class="tw-text-red-500">
+            Incorrect password, please try again
+          </small>
+          }
         </div>
 
         <!-- Password -->
@@ -29,14 +41,29 @@
             formControlName="password"
             placeholder="Input your password"
             minlength="6"
+            [class.ng-invalid]="errorPassword"
+            [class.ng-dirty]="errorPassword"
           />
+          @if (errorPassword) {
+          <small class="tw-text-red-500">
+            Incorrect password, please try again
+          </small>
+          }
         </div>
+      </div>
+
+      <!-- Login Info -->
+      <div
+        class="tw-flex tw-flex-col tw-space-y-2 tw-bg-yellow-200 tw-rounded-lg tw-p-3 tw-mb-8"
+      >
+        <span>username: admin</span>
+        <span>password: 123456</span>
       </div>
 
       <p-button
         label="Sign In"
         type="submit"
-        [disabled]="!loginForm?.valid"
+        [disabled]="!loginForm.valid"
         styleClass="tw-w-full"
       />
     </form>

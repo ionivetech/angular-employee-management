@@ -103,6 +103,11 @@ export class EmployeeComponent {
     }
   }
 
+  // Go to detail page
+  toDetailPage(username: string) {
+    this.router.navigateByUrl(`/dashboard/detail-employee/${username}`);
+  }
+
   // Go to edit page
   editEmployee(username: string): void {
     this.router.navigateByUrl(`/dashboard/edit-employee/${username}`);

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink, Router } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, Validators } from '@angular/forms';
 // Components
 import { InputTextModule } from 'primeng/inputtext';
@@ -19,12 +19,12 @@ import { ButtonModule } from 'primeng/button';
   templateUrl: './login.component.html',
 })
 export class LoginComponent {
-  loginForm: any;
+  loginForm: FormGroup;
+  errorUsername: boolean = false;
+  errorPassword: boolean = false;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {}
-
-  ngOnInit(): void {
-    // Form validation
+  constructor(private formBuilder: FormBuilder, private router: Router) {
+    // Create Form
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: [
@@ -36,8 +36,13 @@ export class LoginComponent {
 
   // Handle submit form
   submitForm(): void {
-    if (this.loginForm?.valid) {
-      this.router.navigateByUrl('/dashboard/employee');
+    if (this.loginForm.valid) {
+      this.errorUsername = this.loginForm.value.username !== 'admin';
+      this.errorPassword = this.loginForm.value.password !== '123456';
+
+      if (!this.errorUsername && !this.errorPassword) {
+        this.router.navigateByUrl('/dashboard/employee');
+      }
     }
   }
 }
