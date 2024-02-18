@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 // Models
-import { userModel } from '@models/user.model';
+import type { userModel } from '@models/user.model';
 // Dummy
 import dummy from '@src/assets/dummyData.json';
 
