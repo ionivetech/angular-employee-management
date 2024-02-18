@@ -18,4 +18,11 @@ export class EmployeeService {
   get employee$() {
     return this._employee.asObservable();
   }
+
+  // Add new data employee
+  addEmployee(value: userModel): void {
+    const dataEmployee = this._employee.getValue();
+    dataEmployee.unshift(value);
+    this._employee.next(dataEmployee);
+  }
 }

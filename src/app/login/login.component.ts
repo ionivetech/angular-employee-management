@@ -29,11 +29,7 @@ export class LoginComponent {
       username: ['', Validators.required],
       password: [
         '',
-        Validators.compose([
-          Validators.required,
-          Validators.minLength(6),
-          Validators.maxLength(8),
-        ]),
+        Validators.compose([Validators.required, Validators.minLength(6)]),
       ],
     });
   }
